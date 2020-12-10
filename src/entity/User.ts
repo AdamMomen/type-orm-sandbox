@@ -7,19 +7,11 @@ export class User extends BaseEntity {
     id: number;
 
   @Column()
-    firstname: string;
+  firstname: string;
 
   @Column()
-    lastname: string;
+  lastname: string;
 
   @Column()
-    isActive: boolean;
-  
-    static findByName(firstname:string, lastname:string){
-        return this.createQueryBuilder("user")
-        .where("user.firstname = :firstname", {firstname})
-        .andWhere("user.lastname =:lastname", {lastname})
-        .getMany();
-        
-    }
+  isActive: boolean;
 }
