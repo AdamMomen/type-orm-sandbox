@@ -1,12 +1,16 @@
 import "reflect-metadata";
-import { createConnection, EntityManager, Repository } from "typeorm";
-import { Photo } from "./entity/Photo";
-import { PhotoMetadata } from "./entity/PhotoMetadata";
-const connectionOptions = require("../ormconfig.json");
+import { createConnection } from "typeorm";
+import { Photo } from "./entities/Photo";
+import { PhotoMetadata } from "./entities/PhotoMetadata";
+const connectionConfig = require("../ormconfig.json");
 
 const main = async () => {
   /* Getting database connection */
-  const connection = await createConnection(connectionOptions);
+  const conn = await createConnection(connectionConfig);
+
+  /**
+   * getting the entities
+   */
 
   const photo = new Photo();
   photo.name = "smiley";
@@ -14,24 +18,15 @@ const main = async () => {
   photo.filename = "smile.jpg";
   photo.views = 4;
   photo.isPublished = true;
-  /**
-   * getting the entities
-   */
-  // const photoRepo = connection.getRepository(Photo);
-  //   const metaPhotRepo = connection.getRepository(PhotoMetadata);
-  //   await metaPhotRepo.create();
-  //   const meta = await metaPhotRepo.findOne(1);
-  //   if (meta) console.log("Photo Metadata: \n", meta);
-  //   const photo = await photoRepo.findOne(1);
-  //   if (photo) console.log("found photos \n", photo);
 
-  let metadata = new PhotoMetadata();
+  const foundPhoto = Photo
+  const metadata = new PhotoMetadata();
   metadata.height = 640;
   metadata.width = 480;
   metadata.compressed = true;
   metadata.comment = "cybershoot";
   metadata.orientation = "portrait";
-  metadata.photo = photo;
+  metadata.photo = Photo.findOne(1) !== undefined  Photo.findOne(1) : photo;
 
   await PhotoMetadata.save(metadata);
 };

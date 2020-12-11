@@ -1,12 +1,14 @@
 import {
+  Entity,
   BaseEntity,
-  Column,
-  JoinColumn,
-  OneToOne,
   PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { Photo } from "./Photo";
 
+@Entity()
 export class PhotoMetadata extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
