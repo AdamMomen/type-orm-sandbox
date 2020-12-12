@@ -5,6 +5,6 @@ export class Category extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column() A;
+  @Column()
   name: string;
 }
