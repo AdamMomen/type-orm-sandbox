@@ -7,9 +7,12 @@ const connectionConfig = require("../ormconfig.json");
 const main = async () => {
   /* creates mySQL database connection */
   const conn = await createConnection(connectionConfig);
-  // Photo.clear();
-  // PhotoMetadata.clear();
-  // User.clear();
+
+  const foundUsers = await User.createQueryBuilder("user")
+    .leftJoinAndSelect("user.photos", "photo")
+    .getMany();
+
+  if (foundUsers) console.log("this user has been found", foundUsers);
 };
 
 main().catch((e) => console.log(e));
