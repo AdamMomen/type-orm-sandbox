@@ -10,12 +10,6 @@ const main = async () => {
   /* creates mySQL database connection */
   const conn = await createConnection(connectionConfig);
 
-  // const foundUsers = await User.createQueryBuilder("user")
-  //   .leftJoinAndSelect("user.photos", "photo")
-  //   .getMany();
-
-  // if (foundUsers) console.log("this user has been found", foundUsers);
-
   const category1 = new Category();
   category1.name = "animals";
   await Category.save(category1);
