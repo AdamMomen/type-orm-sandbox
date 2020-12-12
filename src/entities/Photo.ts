@@ -3,27 +3,40 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { User } from "./User";
 
 @Entity()
 export class Photo extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 100 })
-  name!: string;
+  // @Column({ length: 100 })
+  // name!: string;
 
-  @Column("text")
-  description: string;
+  // @Column("text")
+  // description: string;
+
+  // @Column()
+  // filename: string;
+
+  // @Column("double")
+  // views: number;
+
+  // @Column()
+  // isPublished: boolean;
 
   @Column()
-  filename: string;
+  url: string;
 
-  @Column("double")
-  views: number;
+  // @OneToOne(() => PhotoMetadata, (photoMetadata) => photoMetadata.photo, {
+  //   cascade: true,
+  // })
+  // metadata: PhotoMetadata;
 
-  @Column()
-  isPublished: boolean;
+  @ManyToOne(() => User, (user) => user.photos)
+  user: User;
 }
