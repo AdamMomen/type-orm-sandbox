@@ -19,14 +19,14 @@ const main = async () => {
   photo.views = 4;
   photo.isPublished = true;
 
-  const foundPhoto = Photo
+  const foundPhoto = Photo;
   const metadata = new PhotoMetadata();
   metadata.height = 640;
   metadata.width = 480;
   metadata.compressed = true;
   metadata.comment = "cybershoot";
   metadata.orientation = "portrait";
-  metadata.photo = Photo.findOne(1) !== undefined  Photo.findOne(1) : photo;
+  // metadata.photo = Photo.findOne(1) !== undefined  Photo.findOne(1) : photo;
 
   await PhotoMetadata.save(metadata);
 };

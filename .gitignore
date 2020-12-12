@@ -4,6 +4,10 @@ node_modules
 
 .history
 
+# output dir
 dist/**
 
+.env
+
+# connection Configs for TypeOrm
 ormconfig.json
