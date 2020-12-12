@@ -1,4 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Question } from "./Question";
 
 @Entity()
 export class Category extends BaseEntity {
@@ -7,4 +14,7 @@ export class Category extends BaseEntity {
 
   @Column()
   name: string;
+
+  @ManyToMany(() => Question, (question) => question.categories)
+  questions: Question[];
 }

@@ -19,7 +19,7 @@ export class Question extends BaseEntity {
   @Column()
   text: string;
 
-  @ManyToMany(() => Category)
+  @ManyToMany(() => Category, (category) => category.questions)
   @JoinTable()
   categories: Category[];
 }
