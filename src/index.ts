@@ -15,20 +15,19 @@ const main = async () => {
   //   .getMany();
 
   // if (foundUsers) console.log("this user has been found", foundUsers);
+  // const category1 = new Category();
+  // category1.name = "animals";
+  // await Category.save(category1);
 
-  const category1 = new Category();
-  category1.name = "animals";
-  await Category.save(category1);
+  // const category2 = new Category();
+  // category2.name = "zoo";
+  // await Category.save(category2);
 
-  const category2 = new Category();
-  category2.name = "zoo";
-  await Category.save(category2);
-
-  const question = new Question();
-  question.title = "dogs";
-  question.text = "who let the dogs out?";
-  question.categories = [category1, category2];
-  await Question.save(question);
+  // const question = new Question();
+  // question.title = "dogs";
+  // question.text = "who let the dogs out?";
+  // question.categories = [category1, category2];
+  // await Question.save(question);
 
   console.log(await Question.findOne({ relations: ["categories"] }));
 };
